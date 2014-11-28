@@ -5,8 +5,8 @@ jdk:
 
 env:
   global:
-    - JBOSS_HOME=/tmp/jboss-as-7.1.0.Final
-    - JBOSS_SERVER_LOCATION=http://download.jboss.org/jbossas/7.1/jboss-as-7.1.0.Final/jboss-as-7.1.0.Final.tar.gz
+    - JBOSS_HOME=/tmp/wildfly-8.2.0.Final
+    - JBOSS_SERVER_LOCATION=http://download.jboss.org/wildfly/8.2.0.Final/wildfly-8.2.0.Final.tar.gz
     - OPENSHIFT_REPO=ssh://53c851465973ca84e5000597@javamysql-shippablesamples.rhcloud.com/~/git/javamysql.git
 
 before_install:
@@ -19,7 +19,7 @@ before_script:
 
 script:
   - mvn clean cobertura:cobertura
-  - mvn test -Parq-jbossas-managed
+  - mvn test -Parq-wildfly-managed
 
 after_success:
   - git push -f openshift $BRANCH:master
